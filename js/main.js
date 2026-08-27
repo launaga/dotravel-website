@@ -1,124 +1,53 @@
-/* dotravel — front-end interactions (vanilla, no dependencies)
- * Handles: mobile nav, language toggle, and the home hero slider.
- * The sticky trip-detail rail is pure CSS (see .detail__aside in styles.css).
- */
-(function () {
+(function(){
   "use strict";
+  var STORE={auth:"dotravel.auth",saved:"dotravel.saved",profile:"dotravel.profile",draft:"dotravel.draft",order:"dotravel.order",itinerary:"dotravel.itinerary"};
+  var page=(location.pathname.split("/").pop()||"index.html");
+  var journeys={
+    "rambu-solo":{title:"Rambu Solo: A Torajan Farewell",meta:"Tana Toraja · 20–26 Aug 2026",image:"assets/img/rambusolo-card-web.jpg"},
+    "bali-coast":{title:"Bali: Beyond the Coast",meta:"Bali · 4–8 Nov 2026",image:"assets/img/bali-card-web.jpg"},
+    "komodo-wild":{title:"Komodo: Wild & Untamed",meta:"Flores · 12–18 Sep 2026",image:"assets/img/flores-card-web.jpg"},
+    "java-temples":{title:"Java: Temples to Volcanoes",meta:"Java · 18–23 Sep 2026",image:"assets/img/java-card-web.jpg"},
+    "java-cultural":{title:"Java's Cultural Heart",meta:"Java · 10 days",image:"assets/img/java-card-web.jpg"},
+    "flores-slow":{title:"Flores: The Slow Route East",meta:"Flores · 9 days",image:"assets/img/flores-card-web.jpg"},
+    "raja-ampat":{title:"Raja Ampat: Between the Islands",meta:"West Papua · 9 days",image:"assets/img/rajaampat-card-web.jpg"},
+    "sumba-stone":{title:"Sumba: Stone & Savanna",meta:"Sumba · 7 days",image:"assets/img/sumba-card-web.jpg"},
+    "toba-batak":{title:"Lake Toba: The Batak Highlands",meta:"Sumatra · 6 days",image:"assets/img/toba-card-web.jpg"},
+    "lake-toba":{title:"Lake Toba: The Batak Highlands",meta:"Sumatra · 3–8 Dec 2026",image:"assets/img/toba-card-web.jpg"}
+  };
+  function getJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key))||fallback}catch(e){return fallback}}
+  function setJSON(key,value){localStorage.setItem(key,JSON.stringify(value))}
+  function toast(message){var el=document.querySelector("[data-toast]");if(!el){el=document.createElement("div");el.className="toast";el.dataset.toast="";document.body.appendChild(el)}el.textContent=message;el.classList.add("is-visible");setTimeout(function(){el.classList.remove("is-visible")},2400)}
+  function header(){return '<header class="site-header is-sticky" data-header><div class="shell nav-shell"><a class="brand" href="index.html" aria-label="dotravel home">dotravel<span></span></a><nav class="site-nav" data-site-nav aria-label="Primary navigation"><a href="seasonal.html" '+(page==="seasonal.html"?'aria-current="page"':'')+'>Seasonal</a><a href="signature-journeys.html" '+(page==="signature-journeys.html"?'aria-current="page"':'')+'>Signature Journeys</a><a href="compose.html" '+(page==="compose.html"?'aria-current="page"':'')+'>Compose</a></nav><div class="nav-actions"><a class="icon-link" href="account.html#saved" aria-label="Wishlist"><i data-lucide="heart"></i></a><div class="segmented"><button class="is-active" data-lang="en">EN</button><button data-lang="id">ID</button></div><a class="sos" href="help.html">SOS</a><a class="avatar" href="account.html" aria-label="Account">DT</a><button class="nav-toggle" data-nav-toggle aria-label="Open menu"><i data-lucide="menu"></i></button></div></div></header>'}
+  function footer(){return '<footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--light" href="index.html">dotravel<span></span></a><p>Private journeys that connect you to Indonesia through local knowledge, careful pacing, and people we trust.</p><p>Jakarta, Indonesia<br><a href="mailto:hello@dotravel.co">hello@dotravel.co</a></p></div><div><b>Explore</b><a href="seasonal.html">Seasonal</a><a href="signature-journeys.html">Signature Journeys</a><a href="destinations.html">Destinations</a><a href="notes.html">Travel Notes</a></div><div><b>Plan</b><a href="compose.html">Compose a Journey</a><a href="journey.html">How it works</a><a href="checkout.html">Booking & payment</a><a href="help.html">Travel support</a></div><div><b>Account</b><a href="account.html">My Trips</a><a href="account.html#itinerary">My Itinerary</a><a href="account.html#saved">Wishlist</a><a href="account.html#payments">Payments</a></div><div><b>Support</b><a href="help.html">Help centre</a><a href="help.html">Contact us</a><a href="help.html">SOS / Emergency</a><a href="help.html">Terms & privacy</a></div><div class="footer-news"><b>Stay inspired</b><p>New routes and useful notes, occasionally.</p><form data-newsletter><input type="email" aria-label="Email address" placeholder="Your email" required><button aria-label="Subscribe"><i data-lucide="arrow-right"></i></button></form><small data-newsletter-status>No spam. Unsubscribe anytime.</small></div></div><div class="shell footer-bottom"><span>© <span data-year></span> dotravel</span><span>Curation & execution — never a catalogue.</span></div></footer>'}
+  document.querySelectorAll("[data-site-header]").forEach(function(el){el.innerHTML=header()});
+  document.querySelectorAll("[data-site-footer]").forEach(function(el){el.innerHTML=footer()});
+  if(window.lucide)window.lucide.createIcons();
+  document.querySelectorAll("[data-year]").forEach(function(el){el.textContent=new Date().getFullYear()});
+  var toggle=document.querySelector("[data-nav-toggle]"),nav=document.querySelector("[data-site-nav]");if(toggle&&nav)toggle.addEventListener("click",function(){nav.classList.toggle("is-open")});
+  document.querySelectorAll("[data-lang]").forEach(function(btn){btn.addEventListener("click",function(){document.querySelectorAll("[data-lang]").forEach(function(x){x.classList.remove("is-active")});btn.classList.add("is-active");document.documentElement.lang=btn.dataset.lang;toast(btn.dataset.lang==="id"?"Bahasa Indonesia selected":"English selected")})});
+  document.querySelectorAll("[data-newsletter]").forEach(function(form){form.addEventListener("submit",function(e){e.preventDefault();form.querySelector("input").value="";var s=form.parentElement.querySelector("[data-newsletter-status]");if(s)s.textContent="You're on the list. Thank you."})});
 
-  /* ---- Mobile nav ---- */
-  var toggle = document.querySelector("[data-nav-toggle]");
-  var nav = document.querySelector("[data-site-nav]");
-  if (toggle && nav) {
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.addEventListener("click", function () {
-      var isOpen = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
-      toggle.textContent = isOpen ? "×" : "☰";
-    });
-    nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "☰";
-      }
-    });
+  var filterButtons=document.querySelectorAll("[data-filter]");filterButtons.forEach(function(btn){btn.addEventListener("click",function(){filterButtons.forEach(function(x){x.classList.remove("is-active")});btn.classList.add("is-active");document.querySelectorAll("[data-month]").forEach(function(card){card.hidden=btn.dataset.filter!=="all"&&card.dataset.month!==btn.dataset.filter})})});
+  function runDirectoryFilter(){var q=(document.querySelector("[data-journey-search]")||{}).value||"",region=(document.querySelector("[data-journey-region]")||{}).value||"all",month=(document.querySelector("[data-journey-month]")||{}).value||"all",shown=0;document.querySelectorAll("[data-journey-list] [data-name]").forEach(function(card){var ok=card.dataset.name.toLowerCase().indexOf(q.toLowerCase())>-1&&(region==="all"||card.dataset.region===region)&&(month==="all"||card.dataset.month===month);card.hidden=!ok;if(ok)shown++});var empty=document.querySelector("[data-search-empty]");if(empty)empty.hidden=shown>0}
+  ["[data-journey-search]","[data-journey-region]","[data-journey-month]"].forEach(function(sel){var el=document.querySelector(sel);if(el){el.addEventListener("input",runDirectoryFilter);el.addEventListener("change",runDirectoryFilter)}});
+
+  function paintSaved(){var saved=getJSON(STORE.saved,[]);document.querySelectorAll("[data-save]").forEach(function(btn){btn.classList.toggle("is-saved",saved.indexOf(btn.dataset.save)>-1)});var list=document.querySelector("[data-saved-list]"),empty=document.querySelector("[data-saved-empty]");if(list){list.innerHTML=saved.map(function(id){var j=journeys[id];return j?'<article class="journey-tile"><div class="journey-tile__media"><img src="'+j.image+'" alt="'+j.title+'"><button class="save-btn is-saved" data-save="'+id+'" aria-label="Remove '+j.title+'"><i data-lucide="heart"></i></button></div><div class="journey-tile__body"><p class="micro">'+j.meta+'</p><h3>'+j.title+'</h3><a class="text-link" href="journey.html">View journey →</a></div></article>':''}).join("");empty.hidden=saved.length>0;if(window.lucide)window.lucide.createIcons()}}
+  document.addEventListener("click",function(e){var btn=e.target.closest("[data-save]");if(!btn)return;var saved=getJSON(STORE.saved,[]),id=btn.dataset.save,pos=saved.indexOf(id);if(pos>-1){saved.splice(pos,1);toast("Removed from wishlist")}else{saved.push(id);toast("Saved to wishlist")}setJSON(STORE.saved,saved);paintSaved()});paintSaved();
+
+  var count=document.querySelector("[data-travellers-count]"),total=document.querySelector("[data-price-total]"),label=document.querySelector("[data-price-label]");if(count&&total){var n=2,fmt=new Intl.NumberFormat("id-ID");function price(){count.textContent=n;label.textContent="Total · "+n+" traveller"+(n>1?"s":"");total.textContent="Rp "+fmt.format(n*34000000)}document.querySelector("[data-travellers-decrease]").addEventListener("click",function(){n=Math.max(1,n-1);price()});document.querySelector("[data-travellers-increase]").addEventListener("click",function(){n=Math.min(8,n+1);price()})}
+  var compose=document.querySelector("[data-compose-form]"),result=document.querySelector("[data-compose-result]");if(compose&&result){var savedDraft=getJSON(STORE.draft,null);if(savedDraft){Object.keys(savedDraft).forEach(function(k){var el=compose.elements[k];if(el&&!el.length)el.value=savedDraft[k]})}compose.addEventListener("input",function(){var f=new FormData(compose),o={};f.forEach(function(v,k){o[k]=v});setJSON(STORE.draft,o)});compose.addEventListener("submit",function(e){e.preventDefault();var f=new FormData(compose),o={};f.forEach(function(v,k){o[k]=v});setJSON(STORE.draft,o);var when=o.when?new Date(o.when+"-01T00:00:00Z").toLocaleDateString("en",{month:"long",year:"numeric",timeZone:"UTC"}):"your preferred month";result.querySelector("[data-compose-summary]").textContent="Starting from "+o.origin+" in "+when+" for "+o.travellers+" travellers, over "+o.days.toLowerCase()+".";compose.hidden=true;result.hidden=false;result.scrollIntoView({behavior:"smooth"})});var again=document.querySelector("[data-compose-again]");if(again)again.addEventListener("click",function(){result.hidden=true;compose.hidden=false})}
+
+  var checkout=document.querySelector("[data-checkout-form]");if(checkout)checkout.addEventListener("submit",function(e){e.preventDefault();setJSON(STORE.order,{reference:"NV-2026-7412",paid:true,date:new Date().toISOString()});localStorage.setItem(STORE.auth,"1");checkout.hidden=true;var success=document.querySelector("[data-order-success]");success.hidden=false;success.scrollIntoView({behavior:"smooth"})});
+
+  var authScreen=document.querySelector("[data-auth-screen]"),accountScreen=document.querySelector("[data-account-screen]");if(authScreen&&accountScreen){
+    function accountState(){var logged=localStorage.getItem(STORE.auth)==="1";authScreen.hidden=logged;accountScreen.hidden=!logged;if(logged)openAccountTab()}
+    function login(name,email){localStorage.setItem(STORE.auth,"1");setJSON(STORE.profile,{name:name||"Demo Traveller",email:email||"demo@dotravel.co"});accountState();toast("Welcome back")}
+    document.querySelector("[data-login-form]").addEventListener("submit",function(e){e.preventDefault();login("Demo Traveller",document.querySelector("#login-email").value)});document.querySelector("[data-demo-login]").addEventListener("click",function(){login()});document.querySelector("[data-register-form]").addEventListener("submit",function(e){e.preventDefault();login(document.querySelector("#register-name").value,document.querySelector("#register-email").value)});document.querySelectorAll("[data-auth-toggle]").forEach(function(btn){btn.addEventListener("click",function(){var l=document.querySelector("[data-login-form]"),r=document.querySelector("[data-register-form]");l.hidden=!l.hidden;r.hidden=!r.hidden})});document.querySelector("[data-signout]").addEventListener("click",function(){localStorage.removeItem(STORE.auth);accountState()});
+    function openAccountTab(){var key=location.hash.replace("#","")||"trips",valid=["trips","itinerary","saved","payments","profile","settings"];if(valid.indexOf(key)<0)key="trips";document.querySelectorAll("[data-account-tab]").forEach(function(b){b.classList.toggle("is-active",b.dataset.accountTab===key)});document.querySelectorAll("[data-account-panel]").forEach(function(p){p.classList.toggle("is-active",p.dataset.accountPanel===key)});paintSaved();renderItinerary();var profile=getJSON(STORE.profile,{name:"Demo Traveller",email:"demo@dotravel.co"});document.querySelector("[data-account-name]").textContent=(profile.name||"Demo").split(" ")[0];document.querySelector("[data-account-email]").textContent=profile.email}
+    document.querySelectorAll("[data-account-tab]").forEach(function(btn){btn.addEventListener("click",function(){location.hash=btn.dataset.accountTab;openAccountTab()})});window.addEventListener("hashchange",openAccountTab);accountState();
+    var profileForm=document.querySelector("[data-profile-form]");if(profileForm)profileForm.addEventListener("submit",function(e){e.preventDefault();var f=new FormData(profileForm),o={};f.forEach(function(v,k){o[k]=v});setJSON(STORE.profile,o);openAccountTab();toast("Profile saved")});
+    document.querySelectorAll(".switch").forEach(function(sw){sw.addEventListener("click",function(){sw.classList.toggle("is-on")})});
+    document.querySelectorAll("[data-add-stop]").forEach(function(btn){btn.addEventListener("click",function(){var list=getJSON(STORE.itinerary,[]);list.push({name:"New stop "+(list.length+1),days:2});setJSON(STORE.itinerary,list);renderItinerary()})});document.querySelectorAll("[data-seed]").forEach(function(btn){btn.addEventListener("click",function(){setJSON(STORE.itinerary,[{name:btn.dataset.seed,days:6}]);renderItinerary();toast("Journey added to itinerary")})});
+    function renderItinerary(){var list=getJSON(STORE.itinerary,[]),wrap=document.querySelector("[data-itinerary-list]");if(!wrap)return;wrap.innerHTML=list.map(function(stop,i){return '<div class="settings-card setting-row"><span><b>Stop '+(i+1)+'</b><br>'+stop.name+'</span><span>'+stop.days+' days</span></div>'}).join("");document.querySelector("[data-itinerary-empty]").hidden=list.length>0;document.querySelector("[data-stop-count]").textContent=list.length;document.querySelector("[data-day-count]").textContent=list.reduce(function(a,x){return a+x.days},0)}
   }
-
-  /* ---- Journey traveller pricing ---- */
-  var countEl = document.querySelector("[data-travellers-count]");
-  var totalEl = document.querySelector("[data-price-total]");
-  var totalLabel = document.querySelector("[data-price-label]");
-  if (countEl && totalEl && totalLabel) {
-    var travellers = 2;
-    var pricePerTraveller = 28550000;
-    var formatRupiah = new Intl.NumberFormat("id-ID");
-    function renderPrice() {
-      countEl.textContent = travellers;
-      totalLabel.textContent = "Total · " + travellers + (travellers === 1 ? " traveller" : " travellers");
-      totalEl.textContent = "Rp " + formatRupiah.format(travellers * pricePerTraveller);
-    }
-    var decrease = document.querySelector("[data-travellers-decrease]");
-    var increase = document.querySelector("[data-travellers-increase]");
-    decrease.addEventListener("click", function () { travellers = Math.max(1, travellers - 1); renderPrice(); });
-    increase.addEventListener("click", function () { travellers = Math.min(12, travellers + 1); renderPrice(); });
-  }
-
-  /* ---- Compose brief prototype ---- */
-  var composeForm = document.querySelector("[data-compose-form]");
-  var composeResult = document.querySelector("[data-compose-result]");
-  if (composeForm && composeResult) {
-    var monthFormat = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" });
-    composeForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var data = new FormData(composeForm);
-      var month = String(data.get("when") || "");
-      var whenLabel = month ? monthFormat.format(new Date(month + "-01T00:00:00Z")) : "your preferred window";
-      var people = Number(data.get("travellers") || 2);
-      composeResult.querySelector("[data-compose-summary]").textContent = "Starting from " + data.get("origin") + " in " + whenLabel + " for " + people + (people === 1 ? " traveller." : " travellers.");
-      composeForm.hidden = true;
-      composeResult.hidden = false;
-      composeResult.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-    });
-  }
-
-  /* ---- Language toggle (visual state only — wire to i18n in build) ---- */
-  var langBtns = document.querySelectorAll("[data-lang]");
-  langBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      langBtns.forEach(function (b) { b.classList.remove("is-active"); });
-      btn.classList.add("is-active");
-      document.documentElement.setAttribute("lang", btn.getAttribute("data-lang"));
-    });
-  });
-
-  /* ---- Hero slider ---- */
-  var slider = document.querySelector("[data-slider]");
-  if (slider) {
-    var slides = Array.prototype.slice.call(slider.querySelectorAll(".slider__slide"));
-    var dotsWrap = slider.querySelector("[data-slider-dots]");
-    var index = 0;
-    var timer = null;
-    var DURATION = 6000;
-
-    // build dots
-    slides.forEach(function (_, i) {
-      var dot = document.createElement("button");
-      dot.className = "slider__dot" + (i === 0 ? " is-active" : "");
-      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
-      dot.addEventListener("click", function () { go(i); });
-      dotsWrap.appendChild(dot);
-    });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
-
-    function render() {
-      slides.forEach(function (s, i) { s.classList.toggle("is-active", i === index); });
-      dots.forEach(function (d, i) { d.classList.toggle("is-active", i === index); });
-    }
-    function go(i) {
-      index = (i + slides.length) % slides.length;
-      render();
-      restart();
-    }
-    function next() { go(index + 1); }
-    function prev() { go(index - 1); }
-    function restart() {
-      clearInterval(timer);
-      timer = setInterval(next, DURATION);
-    }
-
-    var prevBtn = slider.querySelector("[data-slider-prev]");
-    var nextBtn = slider.querySelector("[data-slider-next]");
-    if (prevBtn) prevBtn.addEventListener("click", prev);
-    if (nextBtn) nextBtn.addEventListener("click", next);
-
-    render();
-    restart();
-    // pause on hover
-    slider.addEventListener("mouseenter", function () { clearInterval(timer); });
-    slider.addEventListener("mouseleave", restart);
-  }
-
-  /* ---- Footer year ---- */
-  var yr = document.querySelector("[data-year]");
-  if (yr) yr.textContent = new Date().getFullYear();
 })();

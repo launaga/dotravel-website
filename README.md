@@ -1,64 +1,48 @@
-# dotravel — Website Handoff Package
+# dotravel
 
-Static, framework-free front-end for **dotravel** (formerly NAVIGO). Every page
-opens directly in a browser — no build step, no dependencies.
+Static, framework-free product prototype for a premium Indonesia travel service.
+It has no build step and can be served from any static host.
 
-## Structure
+## Product routes
 
+- `index.html` — editorial homepage with Seasonal, Signature, and Compose entry points
+- `seasonal.html` — filterable departure directory across Indonesia
+- `signature-journeys.html` — original dotravel routes
+- `journey.html` — journey story, itinerary, traveller pricing, and reservation CTA
+- `compose.html` — custom-trip brief with an auto-saved browser draft
+- `checkout.html` — interactive demo checkout and order confirmation
+- `account.html` — sign in/register, My Trips, itinerary, wishlist, payments, profile, and settings
+- `destinations.html` — regional Indonesia destination index
+- `notes.html` — editorial travel content and SEO landing page
+- `help.html` — traveller help and SOS directory
+- `404.html`, `robots.txt`, `sitemap.xml` — discovery and error handling
+
+## Demo account
+
+Use `demo@dotravel.co` with password `demo1234`, or click **Use demo**.
+
+Authentication, wishlist, itinerary, profile, and order state use `localStorage` so
+the complete conversion flow can be tested without a backend. Checkout is explicitly
+a demo and never sends or stores card data. Production requires a real identity
+provider, database, payment service provider, transactional email, and server-side
+validation.
+
+## Local preview
+
+```sh
+python3 -m http.server 4173
 ```
-website/
-├── index.html                 Home — hero slider, marquee, signature grid, seasonal feature
-├── signature-journeys.html    Gallery — full list of signature journeys (rows)
-├── journey.html               Trip detail — sticky map + pricing rail (see "Sticky rail")
-├── seasonal.html              Seasonal event detail — sticky price card + calendar grid
-├── compose.html               Compose flow — landing, four-step brief, CTA
-├── css/
-│   ├── fonts.css              @font-face for self-hosted variant files
-│   ├── tokens.css             Design tokens (colour, type, radius, spacing) — single source of truth
-│   └── styles.css             All component + layout styles (references tokens)
-├── js/
-│   └── main.js                Mobile nav, language toggle, hero slider (vanilla JS)
-├── fonts/
-│   └── README.md              Which .woff2 variant files to drop in + sources
-└── assets/
-    └── img/
-        └── README.md          Image manifest — remote sources to localise
-```
 
-### Files added beyond the original brief (and why)
-- **journey.html** — the trip-detail page. This is where the sticky map + pricing
-  rail lives, so it needed its own page.
-- **css/tokens.css** — colour/type tokens split out so a developer can retheme in one file.
-- **fonts/** + **assets/img/** READMEs — the package references self-hosted fonts
-  and local images; these tell you exactly what to drop in.
-- The gallery file is `signature-journeys.html` (hyphen, not a space) — spaces in
-  URLs must be percent-encoded and break links, so the filename was normalised.
+Open `http://localhost:4173/` in a browser.
 
-## Brand & style
-- **Wordmark:** `dotravel` (lowercase) + a solid orange dot. See `.brand` in styles.css.
-- **Type:** Display = **Schibsted Grotesk**; Body = **Instrument Sans**. (Replaced Bricolage Grotesque.)
-- **Palette:** cream `#F3EFE7`, ink `#14130F`, brand orange `#FF4A17`. Full set in `css/tokens.css`.
+## Design system
 
-## Sticky rail (trip detail — key pattern)
-On `journey.html` and `seasonal.html` the right column **freezes** while the left
-document scrolls. The mechanism:
-- The rail uses `position: sticky; top: 90px` (`.detail__aside` / `.price-aside`).
-- **Critical:** no ancestor may use `overflow: hidden` — that silently creates a
-  scroll container and kills sticky. `body` uses `overflow-x: clip` instead, which
-  clips horizontally without breaking sticky. Keep this if you refactor.
-- On the trip detail, the map fills the rail (`flex: 1`) and the pricing panel sits
-  under it; on mobile (`≤960px`) the rail switches to `position: static` and stacks.
+- Palette: cream `#F3EFE7`, ink `#14130F`, orange `#FF4A17`
+- Display type: Schibsted Grotesk
+- Body type: Instrument Sans
+- Shared tokens: `css/tokens.css`
+- Components and responsive layout: `css/styles.css`
+- Shared UI and interactions: `js/main.js`
 
-## Notes for the build
-- **Fonts** load from the Google Fonts CDN in each page's `<head>` so the package
-  previews immediately. To self-host, drop the `.woff2` files into `/fonts` and
-  swap the CDN `<link>` for `<link rel="stylesheet" href="css/fonts.css">`.
-- **Images** are self-hosted in `assets/img/` (no remote image loads). The pages
-  use optimized `*-web.jpg` variants; original source images are kept for future exports.
-- **Language toggle** (EN/ID) sets visual state + `<html lang>` only; wire it to
-  your i18n layer. The full bilingual copy lives in the source app.
-- **Route map** on the trip detail is a placeholder image; production uses Leaflet
-  (`leaflet@1.9.4`) as in the app.
-- The static preview includes an interactive four-question **compose brief** and
-  live traveller pricing. Checkout, submissions, translation, maps, and the SOS
-  directory still need to be connected to production services.
+Images are self-hosted in `assets/img/`. Google Fonts and Lucide icons currently
+load from CDNs; self-host those assets before using the site in an offline product.

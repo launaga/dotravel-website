@@ -1,188 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>dotravel — Indonesia, composed</title>
-  <meta name="description" content="One finished journey at a time. Composed & curated across Indonesia — never a catalogue.">
-  <!-- Working preview uses the Google Fonts CDN. To self-host, drop the .woff2
-       files into /fonts (see fonts/README.md) and replace this <link> with:
-       <link rel="stylesheet" href="css/fonts.css"> -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Private Journeys Across Indonesia | dotravel</title>
+  <meta name="description" content="Explore seasonal departures, travel on a signature route, or compose a private journey across Indonesia with dotravel.">
+  <link rel="canonical" href="https://dotravel-website.vercel.app/"><meta property="og:title" content="Private Journeys Across Indonesia | dotravel"><meta property="og:description" content="Seasonal departures, signature routes, and private journeys composed around you."><meta property="og:type" content="website"><meta property="og:image" content="https://dotravel-website.vercel.app/assets/img/rambusolo-hero-web.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="css/tokens.css"><link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/a11y.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"dotravel","url":"https://dotravel-website.vercel.app/","areaServed":"Indonesia","description":"Private journeys across Indonesia, composed with local knowledge."}</script>
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="brand" href="index.html">dotravel<span class="brand__dot"></span></a>
-      <nav class="site-nav" data-site-nav>
-        <a href="seasonal.html">Seasonal</a>
-        <a href="signature-journeys.html">Signature Journeys</a>
-        <a href="compose.html">Compose</a>
-      </nav>
-      <div class="header-actions">
-        <div class="lang-toggle">
-          <button data-lang="en" class="is-active">EN</button>
-          <button data-lang="id">ID</button>
-        </div>
-        <button class="sos-pill">SOS</button>
-        <button class="nav-toggle" data-nav-toggle aria-label="Menu">☰</button>
-      </div>
-    </div>
-  </header>
-
+  <header class="site-header" data-header><div class="shell nav-shell"><a class="brand" href="index.html" aria-label="dotravel home">dotravel<span></span></a><nav class="site-nav" data-site-nav aria-label="Primary navigation"><a href="seasonal.html">Seasonal</a><a href="signature-journeys.html">Signature Journeys</a><a href="compose.html">Compose</a></nav><div class="nav-actions"><a class="icon-link" href="account.html#saved" aria-label="Wishlist"><i data-lucide="heart"></i></a><div class="segmented"><button class="is-active" data-lang="en">EN</button><button data-lang="id">ID</button></div><a class="sos" href="help.html">SOS</a><a class="avatar" href="account.html" aria-label="Account">DT</a><button class="nav-toggle" data-nav-toggle aria-label="Open menu"><i data-lucide="menu"></i></button></div></div></header>
   <main>
-    <!-- ===== HERO ===== -->
-    <section class="container">
-      <div class="hero">
-        <div>
-          <div class="kicker"><span class="kicker__dot"></span> Composed to order · Indonesia</div>
-          <h1 class="hero__title" style="margin-top:22px;">Tell us almost nothing. We return a finished journey.</h1>
-          <p class="hero__body">Where from, roughly when, how many of you — that's the whole brief. We compose one complete journey, seeded from our curation, and you revise it from there. Never a blank page.</p>
-          <div class="hero__cta-row">
-            <a class="btn btn--dark" href="compose.html">Compose my journey <span>→</span></a>
-            <div class="hero__cta-note">
-              <b>Takes about two minutes</b>
-              <span>No account needed to start</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero slider -->
-        <div class="slider" data-slider>
-          <div class="slider__slide is-active">
-            <img src="assets/img/rambusolo-hero-web.jpg" alt="Highland ceremony, Tana Toraja">
-            <div class="slider__scrim"></div>
-            <a class="slider__caption" href="seasonal.html">
-              <div>
-                <div class="slider__tag">Seasonal · Limited quota</div>
-                <div class="slider__cap-title">Rambu Solo' — the Toraja funeral rites</div>
-                <div class="slider__cap-meta">20–26 Aug 2026 · 6 places left</div>
-              </div>
-              <span style="font-size:20px;color:var(--orange);">→</span>
-            </a>
-          </div>
-          <div class="slider__slide">
-            <img src="assets/img/java-hero-web.jpg" alt="Java — Temples to Volcanoes">
-            <div class="slider__scrim"></div>
-            <a class="slider__caption" href="journey.html">
-              <div>
-                <div class="slider__tag">Signature Journey</div>
-                <div class="slider__cap-title">Java — Temples to Volcanoes</div>
-                <div class="slider__cap-meta">5 days · from Rp 22.500.000</div>
-              </div>
-              <span style="font-size:20px;color:var(--orange);">→</span>
-            </a>
-          </div>
-          <div class="slider__slide">
-            <img src="assets/img/flores-hero-web.jpg" alt="Flores — The Slow Route East">
-            <div class="slider__scrim"></div>
-            <a class="slider__caption" href="signature-journeys.html">
-              <div>
-                <div class="slider__tag">Signature Journey</div>
-                <div class="slider__cap-title">Flores — The Slow Route East</div>
-                <div class="slider__cap-meta">6 days · from Rp 27.500.000</div>
-              </div>
-              <span style="font-size:20px;color:var(--orange);">→</span>
-            </a>
-          </div>
-          <button class="slider__arrow slider__arrow--prev" data-slider-prev aria-label="Previous">‹</button>
-          <button class="slider__arrow slider__arrow--next" data-slider-next aria-label="Next">›</button>
-          <div class="slider__dots" data-slider-dots></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MARQUEE ===== -->
-    <section class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Curated &amp; composed<span class="marquee__star">✳</span></span>
-        <span>Never a catalogue<span class="marquee__star">✳</span></span>
-        <span>One journey at a time<span class="marquee__star">✳</span></span>
-        <span>Tana Toraja<span class="marquee__star">✳</span></span>
-        <span>Curated &amp; composed<span class="marquee__star">✳</span></span>
-        <span>Never a catalogue<span class="marquee__star">✳</span></span>
-        <span>One journey at a time<span class="marquee__star">✳</span></span>
-        <span>Tana Toraja<span class="marquee__star">✳</span></span>
-      </div>
-    </section>
-
-    <!-- ===== SIGNATURE JOURNEYS ===== -->
-    <section class="container section">
-      <div class="section-head">
-        <div>
-          <div class="section-head__num">01 — Selected work</div>
-          <h2>Signature Journeys</h2>
-        </div>
-        <a class="link-arrow" href="signature-journeys.html">See all journeys <span>→</span></a>
-      </div>
-      <p class="section-sub">Finished journeys, curated end to end. Read one the way you'd read an essay — then make it yours and adjust the details.</p>
-
-      <div class="card-grid">
-        <a class="jcard" href="journey.html">
-          <div class="jcard__media"><span class="jcard__no">01</span><img src="assets/img/java-card-web.jpg" alt="Java"></div>
-          <div class="jcard__body">
-            <div class="jcard__meta">5 days · Indonesia</div>
-            <div class="jcard__title">Java — Temples to Volcanoes</div>
-            <p class="jcard__blurb">Five days east from Yogyakarta: courtyard mornings, Borobudur before the crowds, and the sea of sand at Bromo.</p>
-            <div class="jcard__foot"><span class="jcard__price">from Rp 22.500.000</span><span class="arrow">→</span></div>
-          </div>
-        </a>
-        <a class="jcard" href="signature-journeys.html">
-          <div class="jcard__media"><span class="jcard__no">02</span><img src="assets/img/bali-card-web.jpg" alt="Bali"></div>
-          <div class="jcard__body">
-            <div class="jcard__meta">5 days · Indonesia</div>
-            <div class="jcard__title">Bali — Beyond the Coast</div>
-            <p class="jcard__blurb">Inland Bali: the Sidemen valley, Munduk's cloud forests, and the quiet reef at Pemuteran.</p>
-            <div class="jcard__foot"><span class="jcard__price">from Rp 18.900.000</span><span class="arrow">→</span></div>
-          </div>
-        </a>
-        <a class="jcard" href="signature-journeys.html">
-          <div class="jcard__media"><span class="jcard__no">03</span><img src="assets/img/flores-card-web.jpg" alt="Flores"></div>
-          <div class="jcard__body">
-            <div class="jcard__meta">6 days · Indonesia</div>
-            <div class="jcard__title">Flores — The Slow Route East</div>
-            <p class="jcard__blurb">Komodo's ridgelines, a night village above the clouds at Wae Rebo, and empty water between.</p>
-            <div class="jcard__foot"><span class="jcard__price">from Rp 27.500.000</span><span class="arrow">→</span></div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ===== SEASONAL FEATURE ===== -->
-    <section class="container">
-      <div class="feature">
-        <div class="feature__media"><img src="assets/img/rambusolo-hero-web.jpg" alt="Highland ceremony"></div>
-        <div class="feature__body">
-          <div class="feature__kicker">02 — Seasonal</div>
-          <h2 class="feature__title">Rambu Solo' — the Toraja funeral rites</h2>
-          <p class="feature__lede">A single seasonal window into the highlands of Tana Toraja, timed to the ceremony calendar. Small party, host-vetted, one departure a year.</p>
-          <div class="feature__facts">
-            <span>20–26 Aug 2026</span><span>·</span><span>7 days</span><span>·</span><b>6 places left</b>
-          </div>
-          <div style="margin-top:12px;"><a class="btn btn--orange" href="seasonal.html">See the seasonal journey <span>→</span></a></div>
-        </div>
-      </div>
-    </section>
+    <section class="home-hero"><img class="home-hero__image" src="assets/img/rambusolo-hero-web.jpg" alt="Tongkonan houses in the Tana Toraja highlands"><div class="home-hero__shade"></div><div class="shell home-hero__content"><p class="eyebrow eyebrow--light">Journeys across Indonesia</p><h1>Indonesia,<br>your way.</h1><p>Follow a place in its best season, travel on a route we know by heart, or build a private journey from scratch.</p><a class="btn btn--orange" href="seasonal.html">Explore journeys <i data-lucide="arrow-right"></i></a></div><div class="shell service-rail"><a href="seasonal.html"><b>Seasonal</b><span>Timely departures, led by place and culture.</span><i data-lucide="arrow-right"></i></a><a href="signature-journeys.html"><b>Signature</b><span>Routes shaped and hosted by dotravel.</span><i data-lucide="arrow-right"></i></a><a href="compose.html"><b>Compose</b><span>Your own journey, built step by step.</span><i data-lucide="arrow-right"></i></a></div></section>
+    <section class="section shell" id="departures"><div class="editorial-grid"><div class="editorial-intro"><p class="eyebrow">This season in Indonesia</p><h2>Handpicked departures.<br>Ready when you are.</h2><p>Small-group journeys timed around weather, ceremony calendars, and the people who host them.</p><a class="text-link" href="seasonal.html">See all departures <i data-lucide="arrow-right"></i></a></div><div><div class="filter-row" data-filter-group><button class="is-active" data-filter="all">All months</button><button data-filter="aug">August</button><button data-filter="sep">September</button><button data-filter="nov">November</button></div><div class="departure-grid">
+      <article class="departure-card" data-month="aug"><a href="journey.html"><img src="assets/img/rambusolo-card-web.jpg" alt="Traditional Tongkonan houses in Tana Toraja"></a><div><p class="micro">Aug 2026 · Tana Toraja</p><h3><a href="journey.html">Rambu Solo: A Torajan Farewell</a></h3><p>20–26 Aug · 7 days</p><strong>6 places left</strong></div></article>
+      <article class="departure-card" data-month="nov"><a href="journey.html"><img src="assets/img/bali-card-web.jpg" alt="Temple path through Bali's green highlands"></a><div><p class="micro">Nov 2026 · Bali</p><h3><a href="journey.html">Bali: Beyond the Coast</a></h3><p>4–8 Nov · 5 days</p><strong>4 places left</strong></div></article>
+      <article class="departure-card" data-month="sep"><a href="journey.html"><img src="assets/img/flores-card-web.jpg" alt="Coast and islands near Komodo"></a><div><p class="micro">Sep 2026 · Flores</p><h3><a href="journey.html">Komodo: Wild &amp; Untamed</a></h3><p>12–18 Sep · 7 days</p><strong>5 places left</strong></div></article>
+      <article class="departure-card" data-month="sep"><a href="journey.html"><img src="assets/img/java-card-web.jpg" alt="Borobudur temple at sunrise"></a><div><p class="micro">Sep 2026 · Java</p><h3><a href="journey.html">Java: Temples to Volcanoes</a></h3><p>18–23 Sep · 6 days</p><strong>7 places left</strong></div></article>
+    </div></div></div></section>
+    <section class="archipelago"><div class="shell"><div class="archipelago__head"><div><p class="eyebrow eyebrow--light">The archipelago at a glance</p><h2>Find your way in.</h2></div><a class="text-link text-link--light" href="destinations.html">View all destinations <i data-lucide="arrow-right"></i></a></div><div class="region-strip"><a href="destinations.html#region-sumatra"><span>01</span><b>Sumatra</b><small>Volcanic lakes and rainforest</small></a><a href="destinations.html#region-java"><span>02</span><b>Java</b><small>Living traditions and ancient landscapes</small></a><a href="destinations.html#region-bali"><span>03</span><b>Bali &amp; Nusa Tenggara</b><small>Islands, reefs and village routes</small></a><a href="destinations.html#region-kalimantan"><span>04</span><b>Kalimantan</b><small>Rivers and forest journeys</small></a><a href="destinations.html#region-sulawesi"><span>05</span><b>Sulawesi</b><small>Highlands, culture and coral seas</small></a><a href="destinations.html#region-papua"><span>06</span><b>Maluku &amp; Papua</b><small>Remote islands and rich biodiversity</small></a></div></div></section>
+    <section class="section shell"><div class="editorial-grid"><div class="editorial-intro"><p class="eyebrow">Signature journeys</p><h2>Handcrafted routes.<br>Deeper stories.</h2><p>Original itineraries that join thoughtful pacing, trusted hosts, and places worth staying for.</p><a class="text-link" href="signature-journeys.html">View Signature Journeys <i data-lucide="arrow-right"></i></a></div><div class="signature-row"><a class="image-story" href="journey.html"><img src="assets/img/java-hero-web.jpg" alt="Borobudur and the mountains of Central Java"><span><small>10 days · Java</small><b>Java's Cultural Heart</b><em>From Rp 24.800.000</em></span></a><a class="image-story" href="journey.html"><img src="assets/img/rajaampat-card-web.jpg" alt="Limestone islands and blue water in Raja Ampat"><span><small>9 days · West Papua</small><b>Raja Ampat: Between the Islands</b><em>From Rp 38.900.000</em></span></a><a class="image-story" href="journey.html"><img src="assets/img/sumba-card-web.jpg" alt="Wide green landscape in Sumba"><span><small>7 days · Sumba</small><b>Sumba: Stone &amp; Savanna</b><em>From Rp 29.600.000</em></span></a></div></div></section>
+    <section class="compose-band shell"><div><p class="eyebrow">Compose your journey</p><h2>Your trip, your way.<br>We handle the rest.</h2><p>Share a few essentials. We return a complete first draft, then refine it with you.</p><a class="btn btn--orange" href="compose.html">Start composing <i data-lucide="arrow-right"></i></a></div><ol class="compose-steps"><li><span>1</span><b>Tell us</b><p>Places, dates, pace, and the people travelling.</p></li><li><span>2</span><b>We compose</b><p>A considered route with stays, transfers, and hosts.</p></li><li><span>3</span><b>You refine</b><p>Change the details until the journey feels right.</p></li></ol><div class="mini-itinerary"><p class="micro">Your itinerary preview</p><h3>Four days in Bali</h3><div><b>Day 1</b><span>Arrive in Ubud</span></div><div><b>Day 2</b><span>Rice terraces &amp; village lunch</span></div><div><b>Day 3</b><span>North to Munduk</span></div><div><b>Day 4</b><span>Waterfalls &amp; onward journey</span></div><a href="compose.html">View sample itinerary</a></div></section>
+    <section class="proof-band"><div class="shell proof-grid"><img src="assets/img/rambusolo-card-web.jpg" alt="Local gathering in Tana Toraja"><blockquote>“We never felt like we were following a checklist. The route had room to breathe, and every host knew exactly why we were there.”<footer>Sarah &amp; James · Tana Toraja, 2026</footer></blockquote><div class="metrics"><div><b>12k+</b><span>travellers hosted</span></div><div><b>34</b><span>provinces explored</span></div><div><b>8+</b><span>years on the ground</span></div></div></div></section>
+    <section class="section shell"><div class="editorial-grid"><div class="editorial-intro"><p class="eyebrow">Travel notes</p><h2>Useful before<br>you leave.</h2><p>Practical planning and stories from the people and places behind our journeys.</p><a class="text-link" href="notes.html">Read Travel Notes <i data-lucide="arrow-right"></i></a></div><div class="notes-grid"><a href="notes.html"><img src="assets/img/java-card-web.jpg" alt="Borobudur temple"><small>Planning · 6 min</small><h3>When to travel in Indonesia, region by region</h3><p>A practical guide to weather, local calendars, and the pace of each island.</p></a><a href="notes.html"><img src="assets/img/toba-card-web.jpg" alt="Boat on Lake Toba"><small>Culture · 7 min</small><h3>How to be a thoughtful guest in an Indonesian village</h3><p>Simple ways to arrive with respect and leave a lighter footprint.</p></a><a href="notes.html"><img src="assets/img/flores-card-web.jpg" alt="Flores coastline"><small>Routes · 5 min</small><h3>Flores beyond Komodo: three reasons to travel overland</h3><p>Mountain roads, village stays, and the landscapes between the ports.</p></a></div></div></section>
+    <section class="trust-strip shell"><div><i data-lucide="badge-check"></i><b>Vetted local hosts</b><span>Long-term partners, not anonymous suppliers.</span></div><div><i data-lucide="tags"></i><b>Transparent pricing</b><span>Clear inclusions and no hidden costs.</span></div><div><i data-lucide="lock-keyhole"></i><b>Secure payments</b><span>Card details stay with our payment provider.</span></div><div><i data-lucide="headphones"></i><b>24/7 SOS support</b><span>Help is available throughout your journey.</span></div></section>
   </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div class="brand">dotravel<span class="brand__dot"></span></div>
-      <div class="site-footer__links">
-        <span>Curation &amp; execution — never a catalogue.</span>
-        <a href="#">SOS directory</a>
-      </div>
-      <div style="font-size:13px;color:var(--muted-2);">© <span data-year>2026</span> dotravel</div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand brand--light" href="index.html">dotravel<span></span></a><p>Private journeys that connect you to Indonesia through local knowledge, careful pacing, and people we trust.</p><p>Jakarta, Indonesia<br><a href="mailto:hello@dotravel.co">hello@dotravel.co</a></p></div><div><b>Explore</b><a href="seasonal.html">Seasonal</a><a href="signature-journeys.html">Signature Journeys</a><a href="destinations.html">Destinations</a><a href="notes.html">Travel Notes</a></div><div><b>Plan</b><a href="compose.html">Compose a Journey</a><a href="journey.html">How it works</a><a href="checkout.html">Booking &amp; payment</a><a href="help.html">Travel support</a></div><div><b>Account</b><a href="account.html">My Trips</a><a href="account.html#itinerary">My Itinerary</a><a href="account.html#saved">Wishlist</a><a href="account.html#payments">Payments</a></div><div><b>Support</b><a href="help.html">Help centre</a><a href="help.html">Contact us</a><a href="help.html">SOS / Emergency</a><a href="help.html">Terms &amp; privacy</a></div><div class="footer-news"><b>Stay inspired</b><p>New routes and useful notes, occasionally.</p><form data-newsletter><input type="email" aria-label="Email address" placeholder="Your email" required><button aria-label="Subscribe"><i data-lucide="arrow-right"></i></button></form><small data-newsletter-status>No spam. Unsubscribe anytime.</small></div></div><div class="shell footer-bottom"><span>© <span data-year></span> dotravel</span><span>Curation &amp; execution — never a catalogue.</span></div></footer>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script src="js/main.js"></script>
+</body></html>
