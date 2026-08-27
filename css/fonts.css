@@ -1,0 +1,34 @@
+/* dotravel — Type
+ * Display : Schibsted Grotesk (400,500,600,700,800,900)
+ * Body    : Instrument Sans (400,500,600 + italic 400)
+ *
+ * The @font-face rules below expect self-hosted .woff2 variant files in this
+ * folder (see fonts/README.md for the exact filenames + download sources).
+ * Until those binaries are dropped in, the CDN fallback in each HTML <head>
+ * (<link> to fonts.googleapis.com) keeps the pages rendering.
+ */
+
+/* ---- Schibsted Grotesk (variable-weight roman) ---- */
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("SchibstedGrotesk-VariableFont_wght.woff2") format("woff2-variations");
+}
+
+/* ---- Instrument Sans (variable-weight roman + italic) ---- */
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("InstrumentSans-VariableFont_wdth,wght.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("InstrumentSans-Italic-VariableFont_wdth,wght.woff2") format("woff2-variations");
+}

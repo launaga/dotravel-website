@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dotravel — Indonesia, composed</title>
+  <meta name="description" content="One finished journey at a time. Composed & curated across Indonesia — never a catalogue.">
+  <!-- Working preview uses the Google Fonts CDN. To self-host, drop the .woff2
+       files into /fonts (see fonts/README.md) and replace this <link> with:
+       <link rel="stylesheet" href="css/fonts.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html">dotravel<span class="brand__dot"></span></a>
+      <nav class="site-nav" data-site-nav>
+        <a href="seasonal.html">Seasonal</a>
+        <a href="signature-journeys.html">Signature Journeys</a>
+        <a href="compose.html">Compose</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button data-lang="en" class="is-active">EN</button>
+          <button data-lang="id">ID</button>
+        </div>
+        <button class="sos-pill">SOS</button>
+        <button class="nav-toggle" data-nav-toggle aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="container">
+      <div class="hero">
+        <div>
+          <div class="kicker"><span class="kicker__dot"></span> Composed to order · Indonesia</div>
+          <h1 class="hero__title" style="margin-top:22px;">Tell us almost nothing. We return a finished journey.</h1>
+          <p class="hero__body">Where from, roughly when, how many of you — that's the whole brief. We compose one complete journey, seeded from our curation, and you revise it from there. Never a blank page.</p>
+          <div class="hero__cta-row">
+            <a class="btn btn--dark" href="compose.html">Compose my journey <span>→</span></a>
+            <div class="hero__cta-note">
+              <b>Takes about two minutes</b>
+              <span>No account needed to start</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero slider -->
+        <div class="slider" data-slider>
+          <div class="slider__slide is-active">
+            <img src="assets/img/rambusolo-hero-web.jpg" alt="Highland ceremony, Tana Toraja">
+            <div class="slider__scrim"></div>
+            <a class="slider__caption" href="seasonal.html">
+              <div>
+                <div class="slider__tag">Seasonal · Limited quota</div>
+                <div class="slider__cap-title">Rambu Solo' — the Toraja funeral rites</div>
+                <div class="slider__cap-meta">20–26 Aug 2026 · 6 places left</div>
+              </div>
+              <span style="font-size:20px;color:var(--orange);">→</span>
+            </a>
+          </div>
+          <div class="slider__slide">
+            <img src="assets/img/java-hero-web.jpg" alt="Java — Temples to Volcanoes">
+            <div class="slider__scrim"></div>
+            <a class="slider__caption" href="journey.html">
+              <div>
+                <div class="slider__tag">Signature Journey</div>
+                <div class="slider__cap-title">Java — Temples to Volcanoes</div>
+                <div class="slider__cap-meta">5 days · from Rp 22.500.000</div>
+              </div>
+              <span style="font-size:20px;color:var(--orange);">→</span>
+            </a>
+          </div>
+          <div class="slider__slide">
+            <img src="assets/img/flores-hero-web.jpg" alt="Flores — The Slow Route East">
+            <div class="slider__scrim"></div>
+            <a class="slider__caption" href="signature-journeys.html">
+              <div>
+                <div class="slider__tag">Signature Journey</div>
+                <div class="slider__cap-title">Flores — The Slow Route East</div>
+                <div class="slider__cap-meta">6 days · from Rp 27.500.000</div>
+              </div>
+              <span style="font-size:20px;color:var(--orange);">→</span>
+            </a>
+          </div>
+          <button class="slider__arrow slider__arrow--prev" data-slider-prev aria-label="Previous">‹</button>
+          <button class="slider__arrow slider__arrow--next" data-slider-next aria-label="Next">›</button>
+          <div class="slider__dots" data-slider-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Curated &amp; composed<span class="marquee__star">✳</span></span>
+        <span>Never a catalogue<span class="marquee__star">✳</span></span>
+        <span>One journey at a time<span class="marquee__star">✳</span></span>
+        <span>Tana Toraja<span class="marquee__star">✳</span></span>
+        <span>Curated &amp; composed<span class="marquee__star">✳</span></span>
+        <span>Never a catalogue<span class="marquee__star">✳</span></span>
+        <span>One journey at a time<span class="marquee__star">✳</span></span>
+        <span>Tana Toraja<span class="marquee__star">✳</span></span>
+      </div>
+    </section>
+
+    <!-- ===== SIGNATURE JOURNEYS ===== -->
+    <section class="container section">
+      <div class="section-head">
+        <div>
+          <div class="section-head__num">01 — Selected work</div>
+          <h2>Signature Journeys</h2>
+        </div>
+        <a class="link-arrow" href="signature-journeys.html">See all journeys <span>→</span></a>
+      </div>
+      <p class="section-sub">Finished journeys, curated end to end. Read one the way you'd read an essay — then make it yours and adjust the details.</p>
+
+      <div class="card-grid">
+        <a class="jcard" href="journey.html">
+          <div class="jcard__media"><span class="jcard__no">01</span><img src="assets/img/java-card-web.jpg" alt="Java"></div>
+          <div class="jcard__body">
+            <div class="jcard__meta">5 days · Indonesia</div>
+            <div class="jcard__title">Java — Temples to Volcanoes</div>
+            <p class="jcard__blurb">Five days east from Yogyakarta: courtyard mornings, Borobudur before the crowds, and the sea of sand at Bromo.</p>
+            <div class="jcard__foot"><span class="jcard__price">from Rp 22.500.000</span><span class="arrow">→</span></div>
+          </div>
+        </a>
+        <a class="jcard" href="signature-journeys.html">
+          <div class="jcard__media"><span class="jcard__no">02</span><img src="assets/img/bali-card-web.jpg" alt="Bali"></div>
+          <div class="jcard__body">
+            <div class="jcard__meta">5 days · Indonesia</div>
+            <div class="jcard__title">Bali — Beyond the Coast</div>
+            <p class="jcard__blurb">Inland Bali: the Sidemen valley, Munduk's cloud forests, and the quiet reef at Pemuteran.</p>
+            <div class="jcard__foot"><span class="jcard__price">from Rp 18.900.000</span><span class="arrow">→</span></div>
+          </div>
+        </a>
+        <a class="jcard" href="signature-journeys.html">
+          <div class="jcard__media"><span class="jcard__no">03</span><img src="assets/img/flores-card-web.jpg" alt="Flores"></div>
+          <div class="jcard__body">
+            <div class="jcard__meta">6 days · Indonesia</div>
+            <div class="jcard__title">Flores — The Slow Route East</div>
+            <p class="jcard__blurb">Komodo's ridgelines, a night village above the clouds at Wae Rebo, and empty water between.</p>
+            <div class="jcard__foot"><span class="jcard__price">from Rp 27.500.000</span><span class="arrow">→</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== SEASONAL FEATURE ===== -->
+    <section class="container">
+      <div class="feature">
+        <div class="feature__media"><img src="assets/img/rambusolo-hero-web.jpg" alt="Highland ceremony"></div>
+        <div class="feature__body">
+          <div class="feature__kicker">02 — Seasonal</div>
+          <h2 class="feature__title">Rambu Solo' — the Toraja funeral rites</h2>
+          <p class="feature__lede">A single seasonal window into the highlands of Tana Toraja, timed to the ceremony calendar. Small party, host-vetted, one departure a year.</p>
+          <div class="feature__facts">
+            <span>20–26 Aug 2026</span><span>·</span><span>7 days</span><span>·</span><b>6 places left</b>
+          </div>
+          <div style="margin-top:12px;"><a class="btn btn--orange" href="seasonal.html">See the seasonal journey <span>→</span></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="brand">dotravel<span class="brand__dot"></span></div>
+      <div class="site-footer__links">
+        <span>Curation &amp; execution — never a catalogue.</span>
+        <a href="#">SOS directory</a>
+      </div>
+      <div style="font-size:13px;color:var(--muted-2);">© <span data-year>2026</span> dotravel</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

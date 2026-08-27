@@ -1,0 +1,67 @@
+/* dotravel — Design tokens
+ * Single source of truth for colour, type, radius, spacing, shadow.
+ * All component styles in styles.css reference these variables.
+ */
+:root {
+  /* ---- Brand & surface ---- */
+  --cream:        #F3EFE7;  /* page background */
+  --cream-2:      #F5F1EA;
+  --ink:          #14130F;  /* primary text / dark panels */
+  --orange:       #FF4A17;  /* brand accent */
+  --orange-dark:  #E23C0C;  /* accent hover / pressed */
+
+  --panel:        #FBF9F4;  /* raised card on cream */
+  --panel-2:      #EDE8DE;  /* footer / inset band */
+  --border:       #E4DECF;  /* card & divider border */
+  --border-soft:  #EBE5D8;  /* inner hairline */
+
+  /* ---- Text ---- */
+  --text:         #4A463E;  /* body copy */
+  --ink-2:        #2B2926;  /* lead paragraphs */
+  --muted:        #5A564D;
+  --muted-2:      #8A8478;  /* labels, meta */
+  --muted-3:      #7A756A;  /* kicker */
+
+  /* ---- On dark ---- */
+  --on-dark:      #F3EFE7;
+  --on-dark-soft: #C7C2B7;
+  --on-dark-mute: #9A9488;
+  --accent-soft:  #FFA98A;
+  --accent-soft-2:#FFC9B4;
+
+  /* ---- Status / badge (orange tint) ---- */
+  --badge-bg:     #FBECE6;
+  --badge-border: #F5CDBB;
+  --badge-text:   #B23A12;
+
+  /* ---- Type ---- */
+  --font-display: "Schibsted Grotesk", system-ui, sans-serif;
+  --font-body:    "Instrument Sans", system-ui, sans-serif;
+
+  /* fluid display scale */
+  --fs-hero:  clamp(42px, 5.4vw, 78px);
+  --fs-h1:    clamp(40px, 5.4vw, 66px);
+  --fs-h2:    clamp(34px, 4.2vw, 58px);
+  --fs-h3:    clamp(28px, 3.2vw, 40px);
+  --fs-lead:  clamp(19px, 2vw, 26px);
+
+  /* ---- Radius ---- */
+  --r-xl:  24px;
+  --r-lg:  20px;
+  --r-md:  16px;
+  --r-sm:  12px;
+  --r-pill:100px;
+
+  /* ---- Layout ---- */
+  --container:  1320px;
+  --container-wide: 1480px;
+  --gutter: 34px;
+  --header-h: 74px;
+
+  /* ---- Shadow ---- */
+  --shadow-cta: 0 18px 40px rgba(20,19,15,.16);
+  --shadow-card: 0 20px 50px rgba(20,19,15,.10);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.2,.75,.25,1);
+}
